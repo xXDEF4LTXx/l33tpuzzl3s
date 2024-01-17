@@ -40,12 +40,18 @@
 
 class Solution:
     def romanToInt(self, s: str) -> int:
+        # Create our dict with the roman numerals and their values
         numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        # Check the string meets the length requirements and all the characters in the string are roman numerals
         if 1 <= len(s) <= 15 and all(letter in numerals for letter in s):
+            # Create our total variable
             total = 0
             for i in range(len(s)):
+                # If the current letter's value is less than the next letter's value, subtract the current letter's value from the total
                 if i < len(s) - 1 and numerals[s[i]] < numerals[s[i+1]]: total -= numerals[s[i]]
+                # Otherwise, add the current letter's value to the total
                 else: total += numerals[s[i]]
+            # Return the total
             return total
 
 
@@ -65,11 +71,17 @@ class Solution1:
 
 class Solution2:
     def romanToInt(self, s: str) -> int:
+        # Create our dict with the roman numerals and their values
         s_list = list(s); numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        # Check the string meets the length requirements and all the characters in the string are roman numerals
         if 1 <= len(s) <= 15 and all(letter in numerals for letter in s):
+                # Create our total variable and skip variable
                 total = 0; skip = False
+                # Iterate through the string
                 for letter in s:
+                    # If we need to skip the current iteration, skip it and reset the skip variable to False then continue to the next iteration
                     if skip: skip = False; continue
+                    # If the current letter's value is less than the next letter's value (if statements for each of the cases mentioned in the problem description)
                     if letter == 'I' and len(s_list) > 1:
                         if s_list[1] == 'V':
                             for i in range(2): s_list.pop(0)
@@ -92,8 +104,10 @@ class Solution2:
                             for i in range(2): s_list.pop(0)
                             total+=900; skip = True; continue
                     total += numerals[letter]; s_list.pop(0)
+                # Return the total
                 return total
                     
+# Tests
 solution = Solution()
 
 # Test cases

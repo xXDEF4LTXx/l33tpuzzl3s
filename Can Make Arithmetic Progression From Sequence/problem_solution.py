@@ -18,12 +18,21 @@
 
 class Solution:
     def canMakeArithmeticProgression(self, arr: list[int]) -> bool:
+        # Make sure the array is within the constraints and all elements within the array are within the constraints
         if 2 <= len(arr) <= 1000 and all(-10**6 <= i <= 10**6 for i in arr):
+            # If the array is only 2 elements long, return True
+            if len(arr) == 2: return True
+            # Sort the array and calculate the difference between the first two elements
             arr.sort(); diff = arr[1] - arr[0]
+            # Iterate through the array starting at the third element and check if the difference between each element is the same, if not return False
             for i in range(2, len(arr)): 
                 if arr[i] - arr[i-1] != diff: return False
+            # If the loop completes without returning False, return True
             return True
+        # If the array is not within the constraints, return False
         return False
+
+# Tests
 
 solution = Solution()
 

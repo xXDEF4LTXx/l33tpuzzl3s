@@ -20,10 +20,15 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        # Check if the list contains zeroes and if the length of the list is within the constraints
         if 0 in nums and 1 <= len(nums) <= 10**4 and [-2**31 <= nums[nums.index(i)] <= 2**31 - 1 for i in nums]:
+            # Iterate through the list
             for num in range(0,len(nums)):
+                # Check if the current element is a zero, if so, remove it from the list and append it to the end of the list
                 if nums[num] == 0: nums.pop(nums.index(nums[num])); nums.append(0)
 
+#  Test cases
+                
 solution = Solution()
 
 # Test case 1: No zeroes in the list

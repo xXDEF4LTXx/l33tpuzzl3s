@@ -24,17 +24,31 @@
 
 class Solution:
     def isMonotonic(self, nums: list[int]) -> bool:
+        # Make sure the list is within the constraints
         if 1 <= len(nums) <= 10**5 and all(-10**5 <= i <= 10**5 for i in nums):
+            # Create an index and a list to store whether the numbers are positive, negative, or equal to each other
             index = 0; found = []
+            # Loop through the list of numbers
             for i in range(len(nums)):
+                # If the index is less than the length of the list minus 1, check if the number at the current index is greater than, less than, or equal to the number at the next index
                 if i < len(nums)-1:
+                    # If the number at the current index is greater than the number at the next index, add 'pos' to the list
                     if nums[i] > nums[i+1]: found.append('pos')
+                    # If the number at the current index is less than the number at the next index, add 'neg' to the list
                     elif nums[i] < nums[i+1]: found.append('neg')
+                    # If the number at the current index is equal to the number at the next index, add 'equ' to the list
                     else: found.append('equ')
+                # Remove duplicates from the list
                 found = list(dict.fromkeys(found))
+                # If both 'pos' and 'neg' are in the list, return False
                 if 'pos' in found and 'neg' in found: return False
+            # If the list only contains 'pos' and 'equ' or 'neg' and 'equ', return True
             return True
+        # If the list is not within the constraints, return False
         return False
+    
+# Tests
+    
 solution = Solution()
 
 # Test case 1: Monotone increasing with duplicates alongside each other

@@ -32,17 +32,20 @@
 # -100 <= nums[i] <= 100
 class Solution:
     def arraySign(self, nums: list[int]) -> int:
+        # Check if the list meets the constraints
         if 1 <= len(nums) <= 1000 and all(-100 <= nums[i] <= 100 for i in range(len(nums))):
+            # Create our product variable and set it to 1
             product = 1
+            # Iterate through the list and multiply each element by the product
             for num in nums: product *= num
+            # Check if the product is positive, negative, or zero and return the appropriate value
             if product >0: return 1
             elif product <0: return -1
             else: return 0
-            
 
+# Tests
             
 solution = Solution()
-# Tests
 # Test 1
 nums = [-1,-2,-3,-4,3,2,1]
 expected_output = 1

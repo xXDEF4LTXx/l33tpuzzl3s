@@ -34,10 +34,16 @@
 
 class Solution:
     def plusOne(self, digits: list[int]) -> list[int]:
+        # Check if the length of the list == 1 and if the element is a zero, if so, return [1]
         if len(digits) == 1 and digits[0] == 0: return [1]
+        # Check if the list fits the constraints and if the first element isn't a zero
         elif 1 <= len(digits) <= 100 and all(0 <= digits[i] <= 9 for i in range(len(digits))) and digits[:1][0] != 0:
+            # Convert the list to an integer, add 1, convert back to a list, and return it
             n = int(''.join(str(digit) for digit in digits)); n+=1
+            # Return the list of digits
             return list([int(x) for x in list(str(n))])
+        
+# Tests
 
 solution = Solution()
 

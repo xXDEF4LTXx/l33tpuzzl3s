@@ -26,10 +26,14 @@
 
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        if 1 <= len(s) <= 10**4 and all(char in 'abcdefghijklmnopqrstuvwxyz ' for char in s.lower().strip()): return len(list(filter(lambda x: x!= '', list(s.strip().split(' '))))[-1])
-            
-        
-        
+        # Make sure the string is within the constraints and all characters in the string are lowercase letters or spaces
+        if 1 <= len(s) <= 10**4 and all(char in 'abcdefghijklmnopqrstuvwxyz ' for char in s.lower().strip()):
+            # Create a list of the words in the string, strip the spaces from the ends of the words, and return the length of the last word
+            # The lambda function is used to filter out empty strings from the list of words
+            return len(list(filter(lambda x: x!= '', list(s.strip().split(' '))))[-1])
+
+# Tests        
+
 solution = Solution()
 s = "Hello World"
 output = 5

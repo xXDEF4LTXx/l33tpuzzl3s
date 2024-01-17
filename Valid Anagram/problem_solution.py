@@ -17,8 +17,13 @@
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        # Check if the strings meet the constraints
+        # To check if the strings are anagrams, we can check if they are the same length, contain only lowercase letters, and have the same letters after we turn them into lists and sort them
         if len(s) == len(t) and len(s) >= 1 and len(t) <= 5 * 10**4 and all(letter in list('abcdefghijklmnopqrstuvwxyz') for letter in list(s)) and all(letter in list('abcdefghijklmnopqrstuvwxyz') for letter in list(t)) and sorted(list(s)) == sorted(list(t)): return True
+        # If the strings don't meet the constraints ir aren't anagrams, return False
         return False
+    
+# Tests
 
 solution = Solution()
 

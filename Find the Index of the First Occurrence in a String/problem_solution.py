@@ -21,9 +21,34 @@
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
+        # Create a list of all lowercase letters
         letters = 'abcdefghijklmnopqrstuvwxyz'
+        # Check if the strings are within the constraints and all letters in the strings are lowercase letters
         if len(haystack) >= 1 and len(needle) <= 10**4 and len(needle)>=1 and all(letter in list(letters) for letter in list(needle)) and all(letter in list(letters) for letter in list(haystack)):
+            # Check if the needle is in the haystack
             try: return haystack.index(needle)
+            # If the needle is not in the haystack, return -1
             except ValueError: return -1
+        # If the strings are not within the constraints or all letters in the strings are not lowercase letters, return -1
         return -1
+
+# Tests
+    
 solution = Solution()
+
+haystack = "sadbutsad"
+needle = "sad"
+expected_output = 0
+assert solution.strStr(haystack, needle) == expected_output
+
+haystack = "leetcode"
+needle = "leeto"
+expected_output = -1
+assert solution.strStr(haystack, needle) == expected_output
+
+haystack = "a"
+needle = "a"
+expected_output = 0
+assert solution.strStr(haystack, needle) == expected_output
+
+print("All tests passed")
