@@ -111,5 +111,11 @@ expected = True
 output = solution.isRobotBounded(instructions)
 assert output == expected
 
+# Test 4
+instructions = "GLGLGLGL"
+expected = True
+output = solution.isRobotBounded(instructions)
+assert output == expected
+
 
 print("Passed all tests!")
