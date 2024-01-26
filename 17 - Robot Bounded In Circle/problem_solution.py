@@ -80,7 +80,7 @@ class Solution:
                         # Add 1 to our Y axis
                         if heading == "North": xy[1] += 1
                         # Add 1 to our X axis
-                        elif heading == "East": xy[0] +=1
+                        elif heading == "East": xy[0] += 1
                         # Minus 1 from our Y axis
                         elif heading == "South": xy[1] -= 1
                         # Minus 1 from our X axis
